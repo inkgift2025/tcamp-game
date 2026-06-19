@@ -55,7 +55,15 @@ export class BootScene extends Phaser.Scene {
     }
 
     this.createAnimations();
-    this.scene.start('StartScene');
+    this.scene.start(this.shouldAutoStartRun() ? 'RunScene' : 'StartScene');
+  }
+
+  private shouldAutoStartRun(): boolean {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return new URLSearchParams(window.location.search).get('play') === '1';
   }
 
   private drawLoadingScreen(): void {
