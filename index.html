@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鹅影回廊：Tcamp逃亡测试</title>
+    <style>
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background: linear-gradient(135deg, #071232 0%, #171049 48%, #050817 100%);
+        color: #f8fbff;
+        overflow: hidden;
+      }
+
+      .boot-fallback {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        font-size: 18px;
+        letter-spacing: 0;
+      }
+
+      #app:has(canvas) .boot-fallback {
+        display: none;
+      }
+    </style>
+    <script type="module" crossorigin src="/tcamp-game/assets/index-xn2r0Ezh.js"></script>
+    <link rel="stylesheet" crossorigin href="/tcamp-game/assets/index-Bs7cG0Ks.css">
+  </head>
+  <body>
+    <div id="app"><div class="boot-fallback">鹅影回廊正在加载素材...</div></div>
+  </body>
+</html>
