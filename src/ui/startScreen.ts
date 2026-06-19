@@ -8,6 +8,7 @@ export function createStartScreen(options: StartScreenOptions): UiOverlayHandle 
   const root = getUiRoot();
   const element = document.createElement('section');
   element.className = 'start-screen lobby-screen';
+  element.style.backgroundImage = `url("${import.meta.env.BASE_URL}assets/ui/lobby_reference.png")`;
   element.innerHTML = `
     <div class="lobby-backdrop" aria-hidden="true"></div>
     <div class="lobby-glow lobby-glow-primary" aria-hidden="true"></div>

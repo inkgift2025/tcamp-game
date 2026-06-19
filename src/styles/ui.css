@@ -493,7 +493,10 @@
 }
 
 .lobby-screen {
-  background: #061b58 url("../assets/ui/lobby_reference.png") center / cover no-repeat;
+  background-color: #061b58;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   isolation: isolate;
 }
 
