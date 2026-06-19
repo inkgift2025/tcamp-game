@@ -1,0 +1,156 @@
+请把这个素材包接入当前《鹅影回廊：Tcamp逃亡测试》项目。
+
+我已经把素材包解压到了项目根目录，请检查以下路径是否存在：
+
+- public/assets/characters/penguin/penguin_spritesheet.png
+- public/assets/characters/goose/goose_spritesheet.png
+- public/assets/backgrounds/launch_hall/launch_hall_far.png
+- public/assets/backgrounds/launch_hall/launch_hall_mid.png
+- public/assets/backgrounds/launch_hall/launch_hall_near.png
+- public/assets/tiles/ground_tile.png
+- public/assets/tiles/floating_platform.png
+- public/assets/obstacles/data_barrier.png
+- public/assets/obstacles/laser_gate.png
+- public/assets/items/inspiration_shard.png
+- public/assets/items/energy_orb.png
+- public/assets/items/bounce_pad.png
+- public/assets/ui/ui_panel.png
+- public/assets/ui/ui_button.png
+
+任务目标：
+不要继续用 Phaser Graphics 画复杂角色、鹅、平台、道具。请优先加载这些 PNG 素材并替换原来的 placeholder。
+
+一、更新 assetManifest.ts
+
+请确保包含：
+
+角色：
+- penguin_spritesheet: /assets/characters/penguin/penguin_spritesheet.png
+- goose_spritesheet: /assets/characters/goose/goose_spritesheet.png
+
+背景：
+- launch_hall_far / mid / near
+- data_corridor_far / mid / near
+- energy_pipeline_far / mid / near
+
+地形：
+- ground_tile
+- floating_platform
+- sinking_platform
+
+障碍：
+- data_barrier
+- laser_gate
+- data_crack
+
+道具：
+- inspiration_shard
+- energy_orb
+- bounce_pad
+- supply_crate
+
+UI：
+- ui_panel
+- ui_button
+- pressure_icon
+- score_icon
+
+二、修改 BootScene 加载 spritesheet
+
+请用下面配置加载：
+
+penguin_spritesheet:
+frameWidth: 320
+frameHeight: 320
+
+goose_spritesheet:
+frameWidth: 420
+frameHeight: 320
+
+三、替换 Player 视觉
+
+Player 逻辑不要重写，只替换视觉显示：
+- 使用 penguin_spritesheet 创建 sprite
+- 动画：
+  - idle: frame 0
+  - run: frames 1,2
+  - jump: frame 3
+  - double_jump: frame 4
+  - crouch: frame 5
+  - hurt: frame 6
+- 根据原有状态切换动画
+- 保留原有碰撞盒、二段跳、下蹲、受击无敌逻辑
+- 根据画面需要设置 scale，例如 0.28 - 0.38，具体以角色高度约 70-90px 为准
+
+四、替换 GooseShadow 视觉
+
+- 使用 goose_spritesheet
+- run: frames 0,1
+- sprint: frame 2
+- danger: frame 3
+- attack_shadow: frame 4
+- 根据压力值切换透明度、位置和帧
+- 不要让鹅遮挡玩家核心操作区
+
+五、替换背景
+
+BackgroundSystem 使用三层视差：
+- far: launch_hall_far
+- mid: launch_hall_mid
+- near: launch_hall_near
+
+后续阶段使用 data_corridor 和 energy_pipeline 对应三层。三层背景移动速度：
+- far: 0.1x
+- mid: 0.35x
+- near: 0.7x
+
+六、替换地形/障碍/道具
+
+把以下对象的视觉替换为图片：
+- ground_tile
+- floating_platform
+- sinking_platform
+- data_barrier
+- laser_gate
+- data_crack
+- inspiration_shard
+- energy_orb
+- bounce_pad
+- supply_crate
+
+注意：
+- 视觉图片和 hitbox 要对齐
+- 不要让图片比例拉伸太夸张
+- 如果图片太大，请通过 setDisplaySize 或 scale 调整
+- hitbox 以玩法为准，视觉可以稍微大一点
+
+七、UI 素材
+
+HTML/CSS UI 已经存在的话，不一定要强制替换为图片。可以把 ui_panel、ui_button、pressure_icon、score_icon 作为装饰增强：
+- HUD 压力图标可以用 pressure_icon
+- 分数图标可以用 score_icon
+- 开始按钮可以继续用 CSS 渐变，也可以参考 ui_button
+
+八、保留玩法
+
+不要破坏：
+- 跑酷逻辑
+- 二段跳
+- 下蹲
+- 障碍生成
+- 鹅影压力值
+- 分数
+- 失败和重开
+
+九、完成后运行
+
+请运行：
+npm run build
+
+完成后告诉我：
+1. 哪些素材已经接入
+2. 哪些 Graphics 已经替换
+3. Player 和 Goose 的 spritesheet 动画是否正常
+4. 背景视差是否正常
+5. 哪些素材还需要重新生成或切图
+6. build 是否通过

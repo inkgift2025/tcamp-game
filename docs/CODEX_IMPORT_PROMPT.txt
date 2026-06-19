@@ -1,0 +1,31 @@
+请读取 public/assets/references/ 中的 5 张参考图，并把当前游戏从“Phaser Graphics 临时绘制”改成“素材驱动 + HTML/CSS UI”的方向。
+
+重要：这些 reference 图片不是直接当背景贴图使用，而是用于确定风格、比例、构图和组件形态。
+
+请先完成三件事：
+
+1. 建立资产加载结构：
+   - public/assets/characters
+   - public/assets/backgrounds
+   - public/assets/tiles
+   - public/assets/obstacles
+   - public/assets/items
+   - public/assets/ui
+
+2. UI 技术路线：
+   - 开始页、HUD、失败页使用 HTML/CSS Overlay。
+   - 可以安装 GSAP 做 UI 动效。
+   - Phaser 继续负责游戏逻辑、跑酷、碰撞和素材渲染。
+
+3. 视觉重构顺序：
+   - 第一轮只重做 StartScene 开始页。
+   - 第二轮重做 HUD 和 ResultScene。
+   - 第三轮替换角色、平台、背景、道具素材。
+
+开始页要求：
+- 明亮蓝白赛博训练营风格。
+- 左侧标题和按钮，右侧企鹅被白鹅追逐主视觉。
+- 底部为发光数据砖块跑道。
+- 不要大面积空白，不要半透明几何鹅，不要普通矩形按钮。
+- 不要继续用 Phaser Graphics 硬画复杂 UI。
+
