@@ -493,7 +493,7 @@
 }
 
 .lobby-screen {
-  background: #061b58 url("/assets/ui/lobby_reference.png") center / cover no-repeat;
+  background: #061b58 url("../assets/ui/lobby_reference.png") center / cover no-repeat;
   isolation: isolate;
 }
 
