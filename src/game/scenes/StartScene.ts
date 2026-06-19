@@ -14,6 +14,7 @@ export class StartScene extends Phaser.Scene {
 
   create(): void {
     this.drawTrainingCampBackdrop();
+    this.createCanvasFallbackStart();
     this.startScreen = createStartScreen({
       onStart: () => this.startRun(),
     });
@@ -55,5 +56,66 @@ export class StartScene extends Phaser.Scene {
     bg.fillRect(0, GROUND_Y, GAME_WIDTH, 76);
     bg.lineStyle(5, theme.cyan, 0.72);
     bg.lineBetween(0, GROUND_Y, GAME_WIDTH, GROUND_Y);
+  }
+
+  private createCanvasFallbackStart(): void {
+    this.add
+      .text(GAME_WIDTH / 2, 130, '鹅影回廊', {
+        fontFamily: 'Microsoft YaHei, Arial, sans-serif',
+        fontSize: '56px',
+        color: '#f8fbff',
+        fontStyle: 'bold',
+        stroke: '#07143a',
+        strokeThickness: 8,
+        shadow: { color: '#4debff', blur: 18, fill: true },
+      })
+      .setOrigin(0.5)
+      .setDepth(4);
+
+    this.add
+      .text(GAME_WIDTH / 2, 188, 'Tcamp 逃亡测试', {
+        fontFamily: 'Microsoft YaHei, Arial, sans-serif',
+        fontSize: '24px',
+        color: '#d9f8ff',
+        fontStyle: 'bold',
+        stroke: '#07143a',
+        strokeThickness: 5,
+      })
+      .setOrigin(0.5)
+      .setDepth(4);
+
+    const button = this.add
+      .rectangle(GAME_WIDTH / 2, 278, 256, 72, 0x1d6bff, 0.92)
+      .setStrokeStyle(3, theme.cyan, 0.96)
+      .setDepth(4)
+      .setInteractive({ useHandCursor: true });
+    const label = this.add
+      .text(GAME_WIDTH / 2, 278, '开始训练', {
+        fontFamily: 'Microsoft YaHei, Arial, sans-serif',
+        fontSize: '28px',
+        color: '#ffffff',
+        fontStyle: 'bold',
+        stroke: '#07143a',
+        strokeThickness: 5,
+      })
+      .setOrigin(0.5)
+      .setDepth(5);
+
+    button.on('pointerover', () => button.setFillStyle(0x4debff, 0.96));
+    button.on('pointerout', () => button.setFillStyle(0x1d6bff, 0.92));
+    button.on('pointerdown', () => this.startRun());
+    label.setInteractive({ useHandCursor: true }).on('pointerdown', () => this.startRun());
+
+    this.add
+      .text(GAME_WIDTH / 2, 346, 'Space / W / ↑ 跳跃 · 空中再按二段跳 · S / ↓ 下蹲', {
+        fontFamily: 'Microsoft YaHei, Arial, sans-serif',
+        fontSize: '17px',
+        color: '#bdefff',
+        fontStyle: 'bold',
+        stroke: '#07143a',
+        strokeThickness: 4,
+      })
+      .setOrigin(0.5)
+      .setDepth(4);
   }
 }
