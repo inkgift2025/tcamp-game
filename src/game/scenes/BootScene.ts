@@ -4,6 +4,7 @@ import { GAME_HEIGHT, GAME_WIDTH } from '../config/gameConfig';
 
 export class BootScene extends Phaser.Scene {
   private readonly failedKeys = new Set<string>();
+  private hasBooted = false;
 
   constructor() {
     super('BootScene');
@@ -26,9 +27,27 @@ export class BootScene extends Phaser.Scene {
         this.load.image(asset.key, asset.path);
       }
     }
+
+    this.time.delayedCall(7000, () => {
+      if (this.hasBooted) {
+        return;
+      }
+
+      this.load.reset();
+      this.finishBoot();
+    });
   }
 
   create(): void {
+    this.finishBoot();
+  }
+
+  private finishBoot(): void {
+    if (this.hasBooted) {
+      return;
+    }
+
+    this.hasBooted = true;
     for (const asset of ASSET_MANIFEST) {
       if (this.failedKeys.has(asset.key) || !this.textures.exists(asset.key)) {
         this.createFallbackTexture(asset);
