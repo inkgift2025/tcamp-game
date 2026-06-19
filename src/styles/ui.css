@@ -553,13 +553,16 @@
   z-index: 2;
   display: grid;
   place-items: center;
-  border: 0;
+  border: 1px solid rgba(77, 235, 255, 0.8);
   border-radius: 8px;
-  background: transparent;
-  color: transparent;
+  background: rgba(9, 32, 88, 0.82);
+  color: #ffffff;
   cursor: pointer;
   font: inherit;
+  font-weight: 900;
+  text-shadow: 0 0 8px rgba(4, 10, 28, 0.95);
   transform-origin: center;
+  box-shadow: 0 0 20px rgba(77, 235, 255, 0.28), inset 0 1px rgba(248, 251, 255, 0.2);
 }
 
 .lobby-hotspot::before {
@@ -593,25 +596,40 @@
 }
 
 .lobby-start-button {
-  left: 8.6%;
-  top: 57.1%;
-  width: 29.6%;
-  height: 14%;
+  left: calc(50% - 128px);
+  top: 236px;
+  width: 256px;
+  height: 72px;
   border-radius: 12px;
+  border-width: 3px;
+  background: rgba(29, 107, 255, 0.96);
+  font-size: 28px;
+}
+
+.lobby-start-button::after {
+  content: "开始训练";
 }
 
 .lobby-info-button {
-  left: 11%;
-  top: 73%;
-  width: 11.6%;
-  height: 6.5%;
+  left: calc(50% - 124px);
+  top: 322px;
+  width: 112px;
+  height: 42px;
+}
+
+.lobby-info-button::after {
+  content: "操作说明";
 }
 
 .lobby-about-button {
-  left: 24.1%;
-  top: 73%;
-  width: 10.8%;
-  height: 6.5%;
+  left: calc(50% + 12px);
+  top: 322px;
+  width: 112px;
+  height: 42px;
+}
+
+.lobby-about-button::after {
+  content: "关于";
 }
 
 .lobby-status {
